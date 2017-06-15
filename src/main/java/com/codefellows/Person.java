@@ -3,7 +3,7 @@ package com.codefellows;
 /**
  * Created by Brad on 6/12/2017.
  */
-public class Person {
+public class Person implements Comparable<Person> {
     private int age; //optional
     private String name; //required
     private String homeTown; //optional
@@ -12,6 +12,31 @@ public class Person {
         this.age = builder.age;
         this.name = builder.name;
         this.homeTown = builder.homeTown;
+    }
+
+    @Override
+    public int compareTo(Person p) {
+        return name.compareTo(p.getName());
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void celebrateBirthday() {
+        age++;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String toString() {
+        return String.format("Hi. My name is %s. I am %d years old.", name, age);
     }
 
     public static class Builder {
